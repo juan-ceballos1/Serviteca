@@ -1,0 +1,1 @@
+insert into vehiculo (matricula, marca,modelo) values (:matricula, :marca, :modelo)

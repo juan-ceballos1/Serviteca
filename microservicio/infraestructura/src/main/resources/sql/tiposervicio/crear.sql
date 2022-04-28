@@ -1,0 +1,1 @@
+insert into tiposervicio (nombre) values (:nombre)
