@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @ComponentScan("com.ceiba")
 public class ApplicationMock {
-	
+
 
     @Bean
     public DataSource h2DataSource() {

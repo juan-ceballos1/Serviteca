@@ -1,44 +1,44 @@
-package com.ceiba.tiposervicio.adaptador.repositorio;
+package com.ceiba.vehiculo.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.tiposervicio.modelo.entidad.TipoServicio;
-import com.ceiba.tiposervicio.puerto.repositorio.RepositorioTipoServicio;
+import com.ceiba.vehiculo.modelo.entidad.Vehiculo;
+import com.ceiba.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepositorioTipoServicioMysql implements RepositorioTipoServicio {
+public class RepositorioVehiculoH2 implements RepositorioVehiculo {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="tiposervicio", value="crear")
+    @SqlStatement(namespace= "vehiculo", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="tiposervicio", value="actualizar")
+    @SqlStatement(namespace= "vehiculo", value="actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="tiposervicio", value="eliminar")
+    @SqlStatement(namespace= "vehiculo", value="eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="tiposervicio", value="existe")
+    @SqlStatement(namespace= "vehiculo", value="existe")
     private static String sqlExiste;
 
-    @SqlStatement(namespace="tiposervicio", value="existePorId")
+    @SqlStatement(namespace= "vehiculo", value="existePorId")
     private static String sqlExistePorId;
 
-    public RepositorioTipoServicioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public RepositorioVehiculoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(TipoServicio tipoServicio) {
-        return this.customNamedParameterJdbcTemplate.crear(tipoServicio, sqlCrear);
+    public Long crear(Vehiculo vehiculo) {
+        return this.customNamedParameterJdbcTemplate.crear(vehiculo, sqlCrear);
     }
 
     @Override
-    public void actualizar(TipoServicio tipoServicio) {
-        this.customNamedParameterJdbcTemplate.actualizar(tipoServicio, sqlActualizar);
+    public void actualizar(Vehiculo vehiculo) {
+        this.customNamedParameterJdbcTemplate.actualizar(vehiculo, sqlActualizar);
     }
 
     @Override
@@ -50,9 +50,9 @@ public class RepositorioTipoServicioMysql implements RepositorioTipoServicio {
     }
 
     @Override
-    public boolean existe(String nombre) {
+    public boolean existe(String matricula) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
+        paramSource.addValue("matricula", matricula);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
 

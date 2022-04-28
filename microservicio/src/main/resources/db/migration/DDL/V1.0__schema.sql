@@ -33,3 +33,8 @@ create table servicio (
  FOREIGN KEY (id_tipo_servicio) REFERENCES tiposervicio(id),
  FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id)
 );
+
+
+insert into tiposervicio(
+    nombre
+) values ('LAVA');

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DaoTipoServicio {
     List<DtoTipoServicio> listar();
+    DtoTipoServicio consultarPorId(Long id);
 }

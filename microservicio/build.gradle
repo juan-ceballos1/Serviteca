@@ -64,7 +64,7 @@ allprojects {
 			"io.springfox:springfox-swagger2:2.9.2"
 	]
 
-	project.ext.db = ["com.h2database:h2:2.1.212"]
+	project.ext.db = ["com.h2database:h2"]
 
 	project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
 	project.ext.flyway = ["org.flywaydb:flyway-core:5.2.1"]

@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepositorioServicioMysql implements RepositorioServicio {
+public class RepositorioServicioH2 implements RepositorioServicio {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="servicio", value="crear")
@@ -24,7 +24,7 @@ public class RepositorioServicioMysql implements RepositorioServicio {
     @SqlStatement(namespace="servicio", value="existePorId")
     private static String sqlExistePorId;
 
-    public RepositorioServicioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public RepositorioServicioH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 

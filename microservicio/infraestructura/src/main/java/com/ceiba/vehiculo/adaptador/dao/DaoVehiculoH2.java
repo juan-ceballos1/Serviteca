@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DaoVehiculoMysql implements DaoVehiculo {
+public class DaoVehiculoH2 implements DaoVehiculo {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace= "vehiculo", value="listar")
     private static String sqlListar;
 
-    public DaoVehiculoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public DaoVehiculoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 

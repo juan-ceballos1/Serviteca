@@ -17,7 +17,7 @@ spring:
       type: com.zaxxer.hikari.HikariDataSource
       jdbcUrl: jdbc:h2:mem:servitecadb
       username: juan.ceballos
-      password:
+      password: 12345
       hikari:
          poolName: pool
 
