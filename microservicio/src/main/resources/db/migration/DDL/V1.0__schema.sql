@@ -1,14 +1,7 @@
-create table usuario (
- id int(11) not null auto_increment,
- nombre varchar(100) not null,
- clave varchar(45) not null,
- fecha_creacion datetime null,
- primary key (id)
-);
 
 
 
-create table tiposervicio (
+create table tipoasistencia (
  id int(11) not null auto_increment,
  nombre varchar(100) not null,
  primary key (id)
@@ -22,19 +15,15 @@ create table vehiculo (
  primary key (id)
 );
 
-create table servicio (
+create table asistencia (
  id int(11) not null auto_increment,
- id_tipo_servicio int(11) not null,
+ id_tipo_asistencia int(11) not null,
  id_vehiculo int(11) not null,
  fecha_inicio datetime null,
  fecha_fin datetime null,
  precio double not null,
  primary key (id),
- FOREIGN KEY (id_tipo_servicio) REFERENCES tiposervicio(id),
+ FOREIGN KEY (id_tipo_asistencia) REFERENCES tipoasistencia(id),
  FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id)
 );
 
-
-insert into tiposervicio(
-    nombre
-) values ('LAVA');

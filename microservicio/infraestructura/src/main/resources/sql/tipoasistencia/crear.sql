@@ -1,0 +1,1 @@
+insert into tipoasistencia (nombre) values (:nombre)

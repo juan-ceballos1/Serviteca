@@ -1,2 +1,0 @@
-select id,id_tipo_servicio,id_vehiculo,fecha_inicio,fecha_fin,precio
-from servicio
