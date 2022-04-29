@@ -5,7 +5,6 @@ import com.ceiba.servicio.comando.ComandoServicio;
 import com.ceiba.servicio.comando.manejador.ManejadorActualizarServicio;
 import com.ceiba.servicio.comando.manejador.ManejadorCrearServicio;
 import com.ceiba.servicio.comando.manejador.ManejadorEliminarServicio;
-import com.ceiba.tiposervicio.comando.ComandoTipoServicio;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

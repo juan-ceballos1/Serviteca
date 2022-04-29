@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 public class TipoServicio {
 
-    private static final String SE_DEBE_INGRESAR_El_NOMBRE = "El nombre es obligatorio";
+    private static final String DEBE_INGRESAR_EL_NOMBRE = "El nombre es obligatorio";
     private Long id;
     private String nombre;
     public TipoServicio(Long id, String nombre){
-        validarObligatorio(nombre,SE_DEBE_INGRESAR_El_NOMBRE);
+        validarObligatorio(nombre,DEBE_INGRESAR_EL_NOMBRE);
         this.id=id;
         this.nombre=nombre;
     }

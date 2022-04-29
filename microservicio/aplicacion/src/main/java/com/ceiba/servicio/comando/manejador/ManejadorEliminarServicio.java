@@ -1,7 +1,6 @@
 package com.ceiba.servicio.comando.manejador;
 
 import com.ceiba.servicio.servicio.ServicioEliminarServicio;
-import com.ceiba.tiposervicio.servicio.ServicioEliminarTipoServicio;
 import org.springframework.stereotype.Component;
 
 @Component

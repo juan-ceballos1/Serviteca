@@ -2,8 +2,6 @@ package com.ceiba.servicio.controlador;
 
 import com.ceiba.servicio.consulta.ManejadorListarServicio;
 import com.ceiba.servicio.modelo.dto.DtoServicio;
-import com.ceiba.tiposervicio.consulta.ManejadorListarTipoServicio;
-import com.ceiba.tiposervicio.modelo.dto.DtoTipoServicio;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
