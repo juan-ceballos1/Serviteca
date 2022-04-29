@@ -19,6 +19,8 @@ public class ServicioCrearServicio {
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
     private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "Se debe ingresar la fecha de finalizacion";
     private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
+    private static final String LAVADO = "lavado";
+    private static final String CAMBIO_DE_ACEITE = "cambio de aceite";
 
     private final RepositorioServicio repositorioServicio;
     private final DaoTipoServicio daoTipoServicio;
@@ -65,7 +67,7 @@ public class ServicioCrearServicio {
         }
     }
     private boolean validarLavadoOCambioDeAceite(String nombre){
-        return nombre.equalsIgnoreCase("LAVADO") || nombre.equalsIgnoreCase("CAMBIO DE ACEITE");
+        return LAVADO.equalsIgnoreCase(nombre)||CAMBIO_DE_ACEITE.equalsIgnoreCase(nombre);
     }
 
     private DtoTipoServicio obtenerTipoServicio(Long idTipoServicio){
