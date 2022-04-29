@@ -13,19 +13,19 @@ public class RepositorioVehiculoH2 implements RepositorioVehiculo {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace= "vehiculo", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearVehiculo;
 
     @SqlStatement(namespace= "vehiculo", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarVehiculo;
 
     @SqlStatement(namespace= "vehiculo", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarVehiculo;
 
     @SqlStatement(namespace= "vehiculo", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteVehiculo;
 
     @SqlStatement(namespace= "vehiculo", value="existePorId")
-    private static String sqlExistePorId;
+    private static String sqlExistePorIdVehiculo;
 
     public RepositorioVehiculoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -33,12 +33,12 @@ public class RepositorioVehiculoH2 implements RepositorioVehiculo {
 
     @Override
     public Long crear(Vehiculo vehiculo) {
-        return this.customNamedParameterJdbcTemplate.crear(vehiculo, sqlCrear);
+        return this.customNamedParameterJdbcTemplate.crear(vehiculo, sqlCrearVehiculo);
     }
 
     @Override
     public void actualizar(Vehiculo vehiculo) {
-        this.customNamedParameterJdbcTemplate.actualizar(vehiculo, sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(vehiculo, sqlActualizarVehiculo);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RepositorioVehiculoH2 implements RepositorioVehiculo {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarVehiculo, paramSource);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class RepositorioVehiculoH2 implements RepositorioVehiculo {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("matricula", matricula);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteVehiculo,paramSource, Boolean.class);
 
     }
 
@@ -63,7 +63,7 @@ public class RepositorioVehiculoH2 implements RepositorioVehiculo {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdVehiculo,paramSource, Boolean.class);
 
     }
 }

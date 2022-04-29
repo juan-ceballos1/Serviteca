@@ -13,19 +13,19 @@ public class RepositorioTipoServicioH2 implements RepositorioTipoServicio {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="tiposervicio", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearTipoServicio;
 
     @SqlStatement(namespace="tiposervicio", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarTipoServicio;
 
     @SqlStatement(namespace="tiposervicio", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarTipoServicio;
 
     @SqlStatement(namespace="tiposervicio", value="existe")
-    private static String sqlExiste;
+    private static String sqlExisteTipoServicio;
 
     @SqlStatement(namespace="tiposervicio", value="existePorId")
-    private static String sqlExistePorId;
+    private static String sqlExistePorIdTipoServicio;
 
     public RepositorioTipoServicioH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -33,12 +33,12 @@ public class RepositorioTipoServicioH2 implements RepositorioTipoServicio {
 
     @Override
     public Long crear(TipoServicio tipoServicio) {
-        return this.customNamedParameterJdbcTemplate.crear(tipoServicio, sqlCrear);
+        return this.customNamedParameterJdbcTemplate.crear(tipoServicio, sqlCrearTipoServicio);
     }
 
     @Override
     public void actualizar(TipoServicio tipoServicio) {
-        this.customNamedParameterJdbcTemplate.actualizar(tipoServicio, sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(tipoServicio, sqlActualizarTipoServicio);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RepositorioTipoServicioH2 implements RepositorioTipoServicio {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarTipoServicio, paramSource);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class RepositorioTipoServicioH2 implements RepositorioTipoServicio {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTipoServicio,paramSource, Boolean.class);
 
     }
 
@@ -63,7 +63,7 @@ public class RepositorioTipoServicioH2 implements RepositorioTipoServicio {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdTipoServicio,paramSource, Boolean.class);
 
     }
 }
