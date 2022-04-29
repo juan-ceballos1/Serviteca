@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 public class ServicioEliminarVehiculoTest {
     @Test
     @DisplayName("Deberia eliminar el vehiculo llamando al repositorio")
-    void deberiaEliminarElUsuarioLlamandoAlRepositorio() {
+    void deberiaEliminarElTipoServicioLlamandoAlRepositorio() {
         RepositorioVehiculo repositorioVehiculo = Mockito.mock(RepositorioVehiculo.class);
         ServicioEliminarVehiculo servicioEliminarVehiculo = new ServicioEliminarVehiculo(repositorioVehiculo);
 

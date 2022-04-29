@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServicioCrearVehiculoTest {
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del vehiculo")
-    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {
+    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelTipoServicio() {
         // arrange
         Vehiculo vehiculo = new VehiculoTestDataBuilder().build();
         RepositorioVehiculo repositorioVehiculo = Mockito.mock(RepositorioVehiculo.class);
-        Mockito.when(repositorioVehiculo.existe(Mockito.anyString())).thenReturn(false);
+        Mockito.when(repositorioVehiculo.existe(Mockito.anyString())).thenReturn(true);
         ServicioCrearVehiculo servicioCrearVehiculo = new ServicioCrearVehiculo(repositorioVehiculo);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearVehiculo.ejecutar(vehiculo), ExcepcionDuplicidad.class,"El vehiculo ya existe en el sistema");
@@ -26,11 +26,11 @@ public class ServicioCrearVehiculoTest {
 
     @Test
     @DisplayName("Deberia Crear el vehiculo de manera correcta")
-    void deberiaCrearElUsuarioDeManeraCorrecta() {
+    void deberiaCrearElVehiculoDeManeraCorrecta() {
         // arrange
         Vehiculo vehiculo = new VehiculoTestDataBuilder().build();
         RepositorioVehiculo repositorioVehiculo = Mockito.mock(RepositorioVehiculo.class);
-        Mockito.when(repositorioVehiculo.existe(Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioVehiculo.existe(Mockito.anyString())).thenReturn(false);
         Mockito.when(repositorioVehiculo.crear(vehiculo)).thenReturn(10L);
         ServicioCrearVehiculo servicioCrearVehiculo = new ServicioCrearVehiculo(repositorioVehiculo);
         // act

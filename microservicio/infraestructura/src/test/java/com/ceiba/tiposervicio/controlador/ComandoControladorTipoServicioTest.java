@@ -45,7 +45,7 @@ public class ComandoControladorTipoServicioTest {
 
     @Test
     @DisplayName("Deberia actualizar un tipoServicio")
-    void deberiaActualizarUnUsuario() throws Exception{
+    void deberiaActualizarTipoServicio() throws Exception{
         // arrange
         Long id = 2L;
         ComandoTipoServicio comandoTipoServicio = new ComandoTipoServicioTestDataBuilder().build();
@@ -58,7 +58,7 @@ public class ComandoControladorTipoServicioTest {
 
     @Test
     @DisplayName("Deberia eliminar un tipoServicio")
-    void deberiaEliminarUnUsuario() throws Exception {
+    void deberiaEliminarTipoServicio() throws Exception {
         // arrange
         Long id = 1L;
         // act - assert

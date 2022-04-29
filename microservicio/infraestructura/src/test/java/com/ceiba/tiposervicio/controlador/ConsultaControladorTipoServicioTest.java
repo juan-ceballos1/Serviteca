@@ -28,7 +28,7 @@ public class ConsultaControladorTipoServicioTest {
 
     @Test
     @DisplayName("Deberia listar tiposervicio")
-    void deberiaListarUsuarios() throws Exception {
+    void deberiaListarTipoServicio() throws Exception {
         // arrange
         // act - assert
         mocMvc.perform(get("/tiposervicio")

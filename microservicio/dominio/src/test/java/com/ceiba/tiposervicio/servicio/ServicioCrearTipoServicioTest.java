@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServicioCrearTipoServicioTest {
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del tipoServicio")
-    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {
+    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelTipoServicio() {
         // arrange
         TipoServicio tipoServicio = new TipoServicioTestDataBuilder().build();
         RepositorioTipoServicio repositorioTipoServicio = Mockito.mock(RepositorioTipoServicio.class);
@@ -26,7 +26,7 @@ public class ServicioCrearTipoServicioTest {
 
     @Test
     @DisplayName("Deberia Crear el tipoServicio de manera correcta")
-    void deberiaCrearElUsuarioDeManeraCorrecta() {
+    void deberiaCrearElTipoServicioDeManeraCorrecta() {
         // arrange
         TipoServicio tipoServicio = new TipoServicioTestDataBuilder().build();
         RepositorioTipoServicio repositorioTipoServicio = Mockito.mock(RepositorioTipoServicio.class);

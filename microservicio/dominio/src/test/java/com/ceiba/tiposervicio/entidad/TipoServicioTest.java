@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TipoServicioTest {
     @Test
     @DisplayName("Deberia crear correctamente el vehiculo")
-    void deberiaCrearCorrectamenteElUsusuario() {
+    void deberiaCrearCorrectamenteElTipoServicio() {
         //act
         TipoServicio tipoServicio = new TipoServicioTestDataBuilder().conId(1L).build();
         //assert
