@@ -53,7 +53,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
                sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:serviteca-juan.ceballos',
-               sonarName:'CeibaADN-Serviteca(juan.ceballos)',
+               sonarName:'"CeibaADN-Serviteca(juan.ceballos)"',
                sonarPathProperties:'./sonar-project.properties')
       }
     }
