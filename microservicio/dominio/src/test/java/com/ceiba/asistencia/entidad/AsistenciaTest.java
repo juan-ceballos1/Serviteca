@@ -21,7 +21,7 @@ public class AsistenciaTest {
         LocalDateTime fechaInicio = LocalDateTime.now();
         LocalDateTime fechaFin = LocalDateTime.now();
         //act
-        Asistencia asistencia = new AsistenciaTestDataBuilder().build();
+        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(fechaInicio).conFechaFin(fechaFin).build();
         //assert
         assertEquals(1, asistencia.getId());
         assertEquals(2, asistencia.getIdTipoAsistencia());
