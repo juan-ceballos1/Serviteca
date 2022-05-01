@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class TipoAsistencia {
 
-    private static final String DEBE_INGRESAR_EL_NOMBRE = "El nombre es obligatorio";
+    private static final String DEBE_INGRESAR_EL_NOMBRE = "El nombre de la asistencia es obligatorio";
     private Long id;
     private String nombre;
     public TipoAsistencia(Long id, String nombre){

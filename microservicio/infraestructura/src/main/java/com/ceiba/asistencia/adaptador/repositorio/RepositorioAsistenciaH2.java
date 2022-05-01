@@ -30,7 +30,6 @@ public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
 
     @Override
     public Long crear(Asistencia asistencia) {
-        System.out.println(asistencia.getIdTipoAsistencia());
         return this.customNamedParameterJdbcTemplate.crear(asistencia, sqlCrear);
     }
 
