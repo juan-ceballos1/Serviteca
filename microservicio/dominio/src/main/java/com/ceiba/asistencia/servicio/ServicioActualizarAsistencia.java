@@ -5,7 +5,7 @@ import com.ceiba.asistencia.modelo.entidad.Asistencia;
 import com.ceiba.asistencia.puerto.repositorio.RepositorioAsistencia;
 
 public class ServicioActualizarAsistencia {
-    private static final String EL_SERVICIO_NO_EXISTE_EN_EL_SISTEMA = "El servicio no existe en el sistema";
+    private static final String LA_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA = "La asistencia no existe en el sistema";
     private final RepositorioAsistencia repositorioAsistencia;
 
     public ServicioActualizarAsistencia(RepositorioAsistencia repositorioAsistencia) {
@@ -19,8 +19,8 @@ public class ServicioActualizarAsistencia {
 
     private void validarExistenciaPrevia(Asistencia asistencia) {
         boolean existe = this.repositorioAsistencia.existePorId(asistencia.getId());
-        if(existe) {
-            throw new ExcepcionDuplicidad(EL_SERVICIO_NO_EXISTE_EN_EL_SISTEMA);
+        if(!existe) {
+            throw new ExcepcionDuplicidad(LA_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

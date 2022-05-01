@@ -4,7 +4,7 @@ import com.ceiba.tipoasistencia.modelo.dto.DtoTipoAsistencia;
 
 import java.util.List;
 
-public interface DaoTipoServicio {
+public interface DaoTipoAsistencia {
     List<DtoTipoAsistencia> listar();
     DtoTipoAsistencia consultarPorId(Long id);
 }

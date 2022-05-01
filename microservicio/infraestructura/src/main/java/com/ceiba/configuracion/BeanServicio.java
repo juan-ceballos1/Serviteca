@@ -4,11 +4,11 @@ import com.ceiba.asistencia.puerto.repositorio.RepositorioAsistencia;
 import com.ceiba.asistencia.servicio.ServicioActualizarAsistencia;
 import com.ceiba.asistencia.servicio.ServicioCrearAsistencia;
 import com.ceiba.asistencia.servicio.ServicioEliminarAsistencia;
-import com.ceiba.tipoasistencia.puerto.dao.DaoTipoServicio;
-import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoServicio;
-import com.ceiba.tipoasistencia.servicio.ServicioActualizarTipoServicio;
-import com.ceiba.tipoasistencia.servicio.ServicioCrearTipoServicio;
-import com.ceiba.tipoasistencia.servicio.ServicioEliminarTipoServicio;
+import com.ceiba.tipoasistencia.puerto.dao.DaoTipoAsistencia;
+import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoAsistencia;
+import com.ceiba.tipoasistencia.servicio.ServicioActualizarTipoAsistencia;
+import com.ceiba.tipoasistencia.servicio.ServicioCrearTipoAsistencia;
+import com.ceiba.tipoasistencia.servicio.ServicioEliminarTipoAsistencia;
 import com.ceiba.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import com.ceiba.vehiculo.servicio.ServicioActualizarVehiculo;
 import com.ceiba.vehiculo.servicio.ServicioCrearVehiculo;
@@ -35,23 +35,23 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearTipoServicio servicioCrearTipoServicio(RepositorioTipoServicio repositorioTipoServicio) {
-        return new ServicioCrearTipoServicio(repositorioTipoServicio);
+    public ServicioCrearTipoAsistencia servicioCrearTipoServicio(RepositorioTipoAsistencia repositorioTipoAsistencia) {
+        return new ServicioCrearTipoAsistencia(repositorioTipoAsistencia);
     }
 
     @Bean
-    public ServicioEliminarTipoServicio servicioEliminarTipoServicio(RepositorioTipoServicio repositorioTipoServicio) {
-        return new ServicioEliminarTipoServicio(repositorioTipoServicio);
+    public ServicioEliminarTipoAsistencia servicioEliminarTipoServicio(RepositorioTipoAsistencia repositorioTipoAsistencia) {
+        return new ServicioEliminarTipoAsistencia(repositorioTipoAsistencia);
     }
 
     @Bean
-    public ServicioActualizarTipoServicio servicioActualizarTipoServicio(RepositorioTipoServicio repositorioTipoServicio) {
-        return new ServicioActualizarTipoServicio(repositorioTipoServicio);
+    public ServicioActualizarTipoAsistencia servicioActualizarTipoServicio(RepositorioTipoAsistencia repositorioTipoAsistencia) {
+        return new ServicioActualizarTipoAsistencia(repositorioTipoAsistencia);
     }
 
     @Bean
-    public ServicioCrearAsistencia servicioCrearServicio(RepositorioAsistencia repositorioAsistencia, DaoTipoServicio daoTipoServicio, RepositorioTipoServicio repositorioTipoServicio) {
-        return new ServicioCrearAsistencia(repositorioAsistencia, daoTipoServicio, repositorioTipoServicio);
+    public ServicioCrearAsistencia servicioCrearServicio(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia, RepositorioTipoAsistencia repositorioTipoAsistencia) {
+        return new ServicioCrearAsistencia(repositorioAsistencia, daoTipoAsistencia, repositorioTipoAsistencia);
     }
 
     @Bean

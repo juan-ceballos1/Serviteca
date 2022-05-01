@@ -1,6 +1,6 @@
 package com.ceiba.tipoasistencia.servicio;
 
-import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoServicio;
+import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoAsistencia;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -8,13 +8,13 @@ import org.mockito.Mockito;
 public class ServicioEliminarTipoAsistenciaTest {
     @Test
     @DisplayName("Deberia eliminar el tipoServicio llamando al repositorio")
-    void deberiaEliminarElTipoServicioLlamandoAlRepositorio() {
-        RepositorioTipoServicio repositorioTipoServicio = Mockito.mock(RepositorioTipoServicio.class);
-        ServicioEliminarTipoServicio servicioEliminarTipoServicio = new ServicioEliminarTipoServicio(repositorioTipoServicio);
+    void deberiaEliminarElTipoAsistenciaLlamandoAlRepositorio() {
+        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
+        ServicioEliminarTipoAsistencia servicioEliminarTipoAsistencia = new ServicioEliminarTipoAsistencia(repositorioTipoAsistencia);
 
-        servicioEliminarTipoServicio.ejecutar(1L);
+        servicioEliminarTipoAsistencia.ejecutar(1L);
 
-        Mockito.verify(repositorioTipoServicio, Mockito.times(1)).eliminar(1L);
+        Mockito.verify(repositorioTipoAsistencia, Mockito.times(1)).eliminar(1L);
 
     }
 }

@@ -11,10 +11,10 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AsistenciaCrearVehiculoTest {
+public class ServicioCrearVehiculoTest {
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del vehiculo")
-    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelTipoServicio() {
+    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelVehiculo() {
         // arrange
         Vehiculo vehiculo = new VehiculoTestDataBuilder().build();
         RepositorioVehiculo repositorioVehiculo = Mockito.mock(RepositorioVehiculo.class);

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class AsistenciaActualizarVehiculoTest {
+public class ServicioActualizarVehiculoTest {
     @Test
     @DisplayName("Deberia validar la existencia previa del vehiculo")
     void deberiaValidarLaExistenciaPreviaDelVehiculo() {

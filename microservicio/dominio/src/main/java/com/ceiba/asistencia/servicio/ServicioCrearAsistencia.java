@@ -5,8 +5,8 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.asistencia.modelo.entidad.Asistencia;
 import com.ceiba.asistencia.puerto.repositorio.RepositorioAsistencia;
 import com.ceiba.tipoasistencia.modelo.dto.DtoTipoAsistencia;
-import com.ceiba.tipoasistencia.puerto.dao.DaoTipoServicio;
-import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoServicio;
+import com.ceiba.tipoasistencia.puerto.dao.DaoTipoAsistencia;
+import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoAsistencia;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 public class ServicioCrearAsistencia {
-    private static final String EL_SERVICIO_YA_EXISTE_EN_EL_SISTEMA = "El servicio ya existe en el sistema";
+    private static final String LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA = "La asistencia ya existe en el sistema";
     private static final String EL_TIPO_SERVICIO_NO_EXISTE = "El tipo de servicio no existe en el sistema";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
     private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "Se debe ingresar la fecha de finalizacion";
@@ -23,13 +23,13 @@ public class ServicioCrearAsistencia {
     private static final String CAMBIO_DE_ACEITE = "cambio de aceite";
 
     private final RepositorioAsistencia repositorioAsistencia;
-    private final DaoTipoServicio daoTipoServicio;
-    private final RepositorioTipoServicio repositorioTipoServicio;
+    private final DaoTipoAsistencia daoTipoAsistencia;
+    private final RepositorioTipoAsistencia repositorioTipoAsistencia;
 
-    public ServicioCrearAsistencia(RepositorioAsistencia repositorioAsistencia, DaoTipoServicio daoTipoServicio, RepositorioTipoServicio repositorioTipoServicio) {
+    public ServicioCrearAsistencia(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia, RepositorioTipoAsistencia repositorioTipoAsistencia) {
         this.repositorioAsistencia = repositorioAsistencia;
-        this.daoTipoServicio = daoTipoServicio;
-        this.repositorioTipoServicio = repositorioTipoServicio;
+        this.daoTipoAsistencia = daoTipoAsistencia;
+        this.repositorioTipoAsistencia = repositorioTipoAsistencia;
     }
 
     public Long ejecutar(Asistencia asistencia) {
@@ -50,13 +50,13 @@ public class ServicioCrearAsistencia {
     private void validarExistenciaPrevia(Asistencia asistencia) {
         boolean existe = this.repositorioAsistencia.existePorId(asistencia.getId());
         if(existe) {
-            throw new ExcepcionDuplicidad(EL_SERVICIO_YA_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionDuplicidad(LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA);
         }
     }
 
     private void verificarSiDomingo(LocalDateTime fecha){
         if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
-            throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
+            throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO+" "+fecha);
         }
     }
 
@@ -71,9 +71,9 @@ public class ServicioCrearAsistencia {
     }
 
     private DtoTipoAsistencia obtenerTipoServicio(Long idTipoServicio){
-        boolean existe = this.repositorioTipoServicio.existePorId(idTipoServicio);
+        boolean existe = this.repositorioTipoAsistencia.existePorId(idTipoServicio);
         if(existe){
-            return  daoTipoServicio.consultarPorId(idTipoServicio);
+            return  daoTipoAsistencia.consultarPorId(idTipoServicio);
         }
        throw new ExcepcionDuplicidad(EL_TIPO_SERVICIO_NO_EXISTE);
     }

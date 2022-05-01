@@ -31,8 +31,8 @@ public class ComandoControladorTipoAsistenciaTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Deberia crear un tipoServicio")
-    void deberiaCrearUnTipoServicio() throws Exception{
+    @DisplayName("Deberia crear un tipoAsistencia")
+    void deberiaCrearUnTipoAsistencia() throws Exception{
         // arrange
         ComandoTipoAsistencia comandoTipoAsistencia = new ComandoTipoAsistenciaTestDataBuilder().build();
         // act - assert
@@ -45,9 +45,9 @@ public class ComandoControladorTipoAsistenciaTest {
 
     @Test
     @DisplayName("Deberia actualizar un tipoAsistencia")
-    void deberiaActualizarTipoServicio() throws Exception{
+    void deberiaActualizarTipoAsistencia() throws Exception{
         // arrange
-        Long id = 2L;
+        Long id = 1L;
         ComandoTipoAsistencia comandoTipoAsistencia = new ComandoTipoAsistenciaTestDataBuilder().build();
         // act - assert
         mocMvc.perform(put("/tipoasistencia/{id}",id)
@@ -57,8 +57,8 @@ public class ComandoControladorTipoAsistenciaTest {
     }
 
     @Test
-    @DisplayName("Deberia eliminar un tipoServicio")
-    void deberiaEliminarTipoServicio() throws Exception {
+    @DisplayName("Deberia eliminar un tipoAsistencia")
+    void deberiaEliminarTipoAsistencia() throws Exception {
         // arrange
         Long id = 1L;
         // act - assert

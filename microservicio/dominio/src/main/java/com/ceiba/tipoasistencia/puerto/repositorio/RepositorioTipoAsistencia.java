@@ -2,7 +2,7 @@ package com.ceiba.tipoasistencia.puerto.repositorio;
 
 import com.ceiba.tipoasistencia.modelo.entidad.TipoAsistencia;
 
-public interface RepositorioTipoServicio {
+public interface RepositorioTipoAsistencia {
     /**
      * Permite crear un tipoServicio
      * @param tipoAsistencia

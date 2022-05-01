@@ -3,12 +3,12 @@ package com.ceiba.tipoasistencia.adaptador.repositorio;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.tipoasistencia.modelo.entidad.TipoAsistencia;
-import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoServicio;
+import com.ceiba.tipoasistencia.puerto.repositorio.RepositorioTipoAsistencia;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepositorioTipoAsistenciaH2 implements RepositorioTipoServicio {
+public class RepositorioTipoAsistenciaH2 implements RepositorioTipoAsistencia {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 

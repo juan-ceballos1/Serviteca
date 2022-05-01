@@ -1,15 +1,14 @@
 package com.ceiba.vehiculo.servicio;
 
 import com.ceiba.vehiculo.puerto.repositorio.RepositorioVehiculo;
-import com.ceiba.vehiculo.servicio.ServicioEliminarVehiculo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class AsistenciaEliminarVehiculoTest {
+public class ServicioEliminarVehiculoTest {
     @Test
     @DisplayName("Deberia eliminar el vehiculo llamando al repositorio")
-    void deberiaEliminarElTipoServicioLlamandoAlRepositorio() {
+    void deberiaEliminarElVehiculoLlamandoAlRepositorio() {
         RepositorioVehiculo repositorioVehiculo = Mockito.mock(RepositorioVehiculo.class);
         ServicioEliminarVehiculo servicioEliminarVehiculo = new ServicioEliminarVehiculo(repositorioVehiculo);
 
