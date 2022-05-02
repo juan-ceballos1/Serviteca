@@ -15,7 +15,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 public class ServicioCrearAsistencia {
     private static final String LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA = "La asistencia ya existe en el sistema";
-    private static final String EL_TIPO_SERVICIO_NO_EXISTE = "El tipo de servicio no existe en el sistema";
+    private static final String EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA = "El tipo de asistencia no existe en el sistema";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
     private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "Se debe ingresar la fecha de finalizacion";
     private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
@@ -75,6 +75,6 @@ public class ServicioCrearAsistencia {
         if(existe){
             return  daoTipoAsistencia.consultarPorId(idTipoServicio);
         }
-       throw new ExcepcionDuplicidad(EL_TIPO_SERVICIO_NO_EXISTE);
+       throw new ExcepcionDuplicidad(EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA);
     }
 }
