@@ -60,7 +60,7 @@ public class VehiculoTest {
     }
 
     @Test
-    void deberiaFallarSinTamanioMaticula() {
+    void deberiaFallarSiElTamanoEsMenorOIgualATres() {
 
         //Arrange
         VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conMatricula("grs");
