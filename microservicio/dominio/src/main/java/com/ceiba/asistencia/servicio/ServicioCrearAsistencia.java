@@ -17,7 +17,7 @@ public class ServicioCrearAsistencia {
     private static final String LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA = "La asistencia ya existe en el sistema";
     private static final String EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA = "El tipo de asistencia no existe en el sistema";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
-    private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "La fecha de finalizacion no debe ser menor a la inicio";
+    private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "La fecha de finalizacion no debe ser menor a la de inicio";
     private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
     private static final String LAVADO = "lavado";
     private static final String CAMBIO_DE_ACEITE = "cambio de aceite";

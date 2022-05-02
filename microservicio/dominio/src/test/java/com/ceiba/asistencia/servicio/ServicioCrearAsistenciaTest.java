@@ -122,6 +122,44 @@ public class ServicioCrearAsistenciaTest {
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
         ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
         // act assert
-        BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionValorInvalido.class,"La fecha de finalizacion no debe ser menor a la inicio");
+        BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionValorInvalido.class,"La fecha de finalizacion no debe ser menor a la de inicio");
+    }
+
+    @Test
+    @DisplayName("Deberia lanzar una exepcion cuando la fecha inicial es domingo")
+    void deberiaLanzarUnaExepcionSiLaFechaInicialEsDomingo() {
+        // arrange
+        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-01T18:15:56.331372800")).conFechaFin(LocalDateTime.parse("2022-05-05T18:15:56.331372800")).conPrecio(2000.0).build();
+        RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
+        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
+        DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
+        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
+        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        // act assert
+        BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionValorInvalido.class,"Los domingos no hay servicio");
+    }
+
+    @Test
+    @DisplayName("Deberia crearse si no es lavado ni cambio de aceite y tiene fecha final")
+    void deberiaCrearseCorrectamenteSiNoEsLavadoNiCambioDeAceite() {
+        // arrange
+        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).conFechaFin(LocalDateTime.parse("2022-05-05T18:15:56.331372800")).conPrecio(2000.0).build();
+        RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
+        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
+        DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
+        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
+        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        // act
+        Long idAsistencia = servicioCrearAsistencia.ejecutar(asistencia);
+        //- assert
+        assertEquals(2000.0,asistencia.getPrecio());
+        assertEquals(10L,idAsistencia);
+        Mockito.verify(repositorioAsistencia, Mockito.times(1)).crear(asistencia);
     }
 }

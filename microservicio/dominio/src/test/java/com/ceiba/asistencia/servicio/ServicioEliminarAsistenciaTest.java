@@ -15,12 +15,11 @@ public class ServicioEliminarAsistenciaTest {
     @DisplayName("Deberia validar la existencia previa del la asistencia")
     void deberiaValidarLaExistenciaPreviaDeLaAsistencia() {
         // arrange
-        Asistencia asistencia = new AsistenciaTestDataBuilder().conId(1L).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarAsistencia servicioActualizarAsistencia = new ServicioActualizarAsistencia(repositorioAsistencia);
+        ServicioEliminarAsistencia servicioEliminarAsistencia = new ServicioEliminarAsistencia(repositorioAsistencia);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAsistencia.ejecutar(asistencia), ExcepcionDuplicidad.class,"La asistencia no existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioEliminarAsistencia.ejecutar(Mockito.anyLong()), ExcepcionDuplicidad.class,"La asistencia no existe en el sistema");
     }
     @Test
     @DisplayName("Deberia eliminar la asistencia llamando al repositorio")
