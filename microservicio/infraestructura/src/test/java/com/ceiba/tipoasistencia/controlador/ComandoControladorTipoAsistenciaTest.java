@@ -62,6 +62,10 @@ public class ComandoControladorTipoAsistenciaTest {
         // arrange
         Long id = 1L;
         // act - assert
+        mocMvc.perform(delete("/asistencia/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
         mocMvc.perform(delete("/tipoasistencia/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

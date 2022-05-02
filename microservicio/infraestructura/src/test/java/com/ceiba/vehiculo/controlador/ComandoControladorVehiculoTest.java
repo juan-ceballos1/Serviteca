@@ -63,6 +63,10 @@ public class ComandoControladorVehiculoTest {
         // arrange
         Long id = 1L;
         // act - assert
+        mocMvc.perform(delete("/asistencia/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
         mocMvc.perform(delete("/vehiculos/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
