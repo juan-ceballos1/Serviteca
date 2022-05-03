@@ -36,6 +36,9 @@ public class ConsultaControladorVehiculoTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].matricula", is("12345")))
+                .andExpect(jsonPath("$[0].marca", is("NISSAN")))
+                .andExpect(jsonPath("$[0].modelo", is("CENTRA")))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }
