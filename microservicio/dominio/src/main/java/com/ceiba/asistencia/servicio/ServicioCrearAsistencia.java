@@ -18,12 +18,10 @@ public class ServicioCrearAsistencia {
 
     private final RepositorioAsistencia repositorioAsistencia;
     private final DaoTipoAsistencia daoTipoAsistencia;
-    private final RepositorioTipoAsistencia repositorioTipoAsistencia;
 
-    public ServicioCrearAsistencia(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia, RepositorioTipoAsistencia repositorioTipoAsistencia) {
+    public ServicioCrearAsistencia(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia) {
         this.repositorioAsistencia = repositorioAsistencia;
         this.daoTipoAsistencia = daoTipoAsistencia;
-        this.repositorioTipoAsistencia = repositorioTipoAsistencia;
     }
 
     public Long ejecutar(Asistencia asistencia) {
@@ -34,10 +32,10 @@ public class ServicioCrearAsistencia {
     }
 
     private DtoTipoAsistencia obtenerTipoServicio(Long idTipoServicio){
-        boolean existe = this.repositorioTipoAsistencia.existePorId(idTipoServicio);
-        if(existe){
-            return  daoTipoAsistencia.consultarPorId(idTipoServicio);
+        DtoTipoAsistencia dtoTipoAsistencia=daoTipoAsistencia.consultarPorId(idTipoServicio);
+        if(dtoTipoAsistencia==null){
+            throw new ExcepcionDuplicidad(EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA);
         }
-       throw new ExcepcionDuplicidad(EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA);
+        return  daoTipoAsistencia.consultarPorId(idTipoServicio);
     }
 }

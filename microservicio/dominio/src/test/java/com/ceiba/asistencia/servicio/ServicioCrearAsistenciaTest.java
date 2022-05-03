@@ -29,8 +29,7 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act-asserts
         BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionDuplicidad.class,"El tipo de asistencia no existe en el sistema");
     }
@@ -44,9 +43,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act
         Long idAsistencia = servicioCrearAsistencia.ejecutar(asistencia);
         //- assert
@@ -64,9 +62,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act
         Long idAsistencia = servicioCrearAsistencia.ejecutar(asistencia);
         //- assert
@@ -84,9 +81,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act assert
         BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionValorObligatorio.class,"Se debe ingresar la fecha de finalizacion");
     }
@@ -101,9 +97,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act
         Long idAsistencia = servicioCrearAsistencia.ejecutar(asistencia);
         //- assert
@@ -121,9 +116,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act assert
         BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionValorInvalido.class,"La fecha de finalizacion no debe ser menor a la de inicio");
     }
@@ -138,9 +132,8 @@ public class ServicioCrearAsistenciaTest {
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
-        Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
+        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act
         Long idAsistencia = servicioCrearAsistencia.ejecutar(asistencia);
         //- assert

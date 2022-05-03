@@ -50,8 +50,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearAsistencia servicioCrearServicio(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia, RepositorioTipoAsistencia repositorioTipoAsistencia) {
-        return new ServicioCrearAsistencia(repositorioAsistencia, daoTipoAsistencia, repositorioTipoAsistencia);
+    public ServicioCrearAsistencia servicioCrearServicio(RepositorioAsistencia repositorioAsistencia, DaoTipoAsistencia daoTipoAsistencia) {
+        return new ServicioCrearAsistencia(repositorioAsistencia, daoTipoAsistencia);
     }
 
     @Bean
