@@ -20,19 +20,6 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ServicioCrearAsistenciaTest {
-    @Test
-    @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia de la asistencia")
-    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDeLaAsistencia() {
-        // arrange
-        Asistencia asistencia = new AsistenciaTestDataBuilder().build();
-        RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
-        DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionDuplicidad.class,"La asistencia ya existe en el sistema");
-    }
 
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando el tipo asistencia no existe")

@@ -21,6 +21,7 @@ public class ServicioCrearAsistencia {
     private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
     private static final String LAVADO = "lavado";
     private static final String CAMBIO_DE_ACEITE = "cambio de aceite";
+    private static final double PORCENTAJE_DE_AUMENTO = 0.3;
 
     private final RepositorioAsistencia repositorioAsistencia;
     private final DaoTipoAsistencia daoTipoAsistencia;
@@ -33,7 +34,6 @@ public class ServicioCrearAsistencia {
     }
 
     public Long ejecutar(Asistencia asistencia) {
-        validarExistenciaPrevia(asistencia);
         verificarSiDomingo(asistencia.getFechaInicio());
         DtoTipoAsistencia dtoTipoAsistencia = obtenerTipoServicio(asistencia.getIdTipoAsistencia());
         if(validarLavadoOCambioDeAceite(dtoTipoAsistencia.getNombre())){
@@ -47,13 +47,6 @@ public class ServicioCrearAsistencia {
        return this.repositorioAsistencia.crear(asistencia);
     }
 
-    private void validarExistenciaPrevia(Asistencia asistencia) {
-        boolean existe = this.repositorioAsistencia.existePorId(asistencia.getId());
-        if(existe) {
-            throw new ExcepcionDuplicidad(LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA);
-        }
-    }
-
     private void verificarSiDomingo(LocalDateTime fecha){
         if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
             throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
@@ -61,9 +54,9 @@ public class ServicioCrearAsistencia {
     }
 
     private void aumentarPrecioSiFechaMartesOViernes(Asistencia asistencia){
-        if(asistencia.getFechaInicio().toLocalDate().getDayOfWeek()== DayOfWeek.FRIDAY|| asistencia.getFechaInicio().toLocalDate().getDayOfWeek()==DayOfWeek.TUESDAY){
+        if(asistencia.getFechaInicio().toLocalDate().getDayOfWeek()== DayOfWeek.TUESDAY|| asistencia.getFechaInicio().toLocalDate().getDayOfWeek()==DayOfWeek.FRIDAY){
             double precio= asistencia.getPrecio();
-            asistencia.setPrecio(precio+precio*0.3);
+            asistencia.setPrecio(precio+precio*PORCENTAJE_DE_AUMENTO);
         }
     }
     private boolean validarLavadoOCambioDeAceite(String nombre){
