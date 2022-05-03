@@ -50,25 +50,19 @@ public class Asistencia {
 
     public void asignarPrecio(String nombre){
         if(validarLavadoOCambioDeAceite(nombre)&&fechaMartesOViernes()){
-            setPrecio(precio+precio*PORCENTAJE_DE_AUMENTO);
+            this.precio=precio+precio*PORCENTAJE_DE_AUMENTO;
         }
     }
     public void validarFechaFin(String nombre){
         if(validarLavadoOCambioDeAceite(nombre)){
-            setFechaFin(fechaInicio);
+            this.fechaFin=fechaInicio;
         }
         else {
             validarObligatorio(fechaFin,SE_DEBE_INGRESAR_LA_FECHA_FIN);
             validarMenor(fechaInicio, fechaFin,FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL);
         }
     }
-    public void setFechaFin(LocalDateTime fechaFin) {
-        this.fechaFin = fechaFin;
-    }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
 
     private boolean fechaMartesOViernes(){
         return fechaInicio.toLocalDate().getDayOfWeek()== DayOfWeek.TUESDAY|| fechaInicio.toLocalDate().getDayOfWeek()==DayOfWeek.FRIDAY;
