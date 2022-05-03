@@ -32,6 +32,7 @@ public class AsistenciaTest {
     }
 
     @Test
+    @DisplayName("Deberia falla sin idTipoAsistencia")
     void deberiaFallarSinIdTipoAsistencia() {
 
         //Arrange
@@ -44,6 +45,7 @@ public class AsistenciaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar sin idVehiculo")
     void deberiaFallarSinIdVehiculo() {
 
         //Arrange
@@ -56,6 +58,7 @@ public class AsistenciaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar sin fechaInicio")
     void deberiaFallarSinFechaInicio() {
 
         //Arrange
@@ -67,6 +70,7 @@ public class AsistenciaTest {
                 ExcepcionValorObligatorio.class, "Se debe ingresar la fecha inicio");
     }
     @Test
+    @DisplayName("Deberia fallar si el precio es menor o igual a 0")
     void deberiaFallarSiPrecioMenorOIgulaACero() {
 
         //Arrange
@@ -79,6 +83,7 @@ public class AsistenciaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si la fecha inicial es domingo")
     void deberiaFallarSiFechaInicialEsDomingo() {
 
         //Arrange

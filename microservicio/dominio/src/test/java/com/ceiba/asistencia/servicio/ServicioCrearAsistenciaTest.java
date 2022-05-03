@@ -27,7 +27,6 @@ public class ServicioCrearAsistenciaTest {
         // arrange
         Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
         // act-asserts
@@ -78,7 +77,6 @@ public class ServicioCrearAsistenciaTest {
         // arrange
         Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-06T18:15:56.331372800")).conFechaFin(null).conPrecio(2000.0).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -92,9 +90,8 @@ public class ServicioCrearAsistenciaTest {
     @DisplayName("Deberia crearse si no es lavado ni cambio de aceite y tiene fecha final")
     void deberiaCrearseCorrectamenteSiNoEsLavadoNiCambioDeAceite() {
         // arrange
-        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).conFechaFin(LocalDateTime.parse("2022-05-05T18:15:56.331372800")).conPrecio(2000.0).build();
+        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).conFechaFin(LocalDateTime.parse("2022-05-08T18:15:56.331372800")).conPrecio(2000.0).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -113,7 +110,6 @@ public class ServicioCrearAsistenciaTest {
         // arrange
         Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-06T18:15:56.331372800")).conFechaFin(LocalDateTime.parse("2022-05-05T18:15:56.331372800")).conPrecio(2000.0).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -129,7 +125,6 @@ public class ServicioCrearAsistenciaTest {
         // arrange
         Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).conFechaFin(null).conPrecio(2000.0).build();
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
