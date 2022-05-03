@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 public class ValidadorServiteca {
 
+    private  ValidadorServiteca(){}
     public static void verificarDiaInvalido(LocalDateTime fecha,DayOfWeek dia,String mensaje){
         if(fecha.toLocalDate().getDayOfWeek()== dia){
             throw  new ExcepcionValorInvalido(mensaje);

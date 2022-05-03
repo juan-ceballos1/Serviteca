@@ -38,7 +38,6 @@ public class Asistencia {
         validarObligatorio(fechaInicio,SE_DEBE_INGRESAR_LA_FECHA_INICIO);
         validarObligatorio(precio,SE_DEBE_INGRESAR_EL_PRECIO);
         validarPositivo(precio,PRECIO_MAYOR_A_CERO);
-        verificarSiDomingo(fechaInicio);
         verificarDiaInvalido(fechaInicio,DayOfWeek.SUNDAY,LOS_DOMINGOS_NO_HAY_SERVICIO);
 
         this.id = id;
@@ -77,9 +76,5 @@ public class Asistencia {
     private boolean validarLavadoOCambioDeAceite(String nombre){
         return LAVADO.equalsIgnoreCase(nombre)||CAMBIO_DE_ACEITE.equalsIgnoreCase(nombre);
     }
-    private void verificarSiDomingo(LocalDateTime fecha){
-        if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
-            throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
-        }
-    }
+
 }

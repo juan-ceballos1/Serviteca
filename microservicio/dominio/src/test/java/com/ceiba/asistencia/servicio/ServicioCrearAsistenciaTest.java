@@ -29,7 +29,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia,repositorioTipoAsistencia);
         // act-asserts
@@ -44,7 +43,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
@@ -65,7 +63,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
@@ -86,7 +83,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -104,7 +100,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -125,7 +120,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"REPARACION"));
@@ -143,7 +137,6 @@ public class ServicioCrearAsistenciaTest {
         RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
         RepositorioTipoAsistencia repositorioTipoAsistencia = Mockito.mock(RepositorioTipoAsistencia.class);
         DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        Mockito.when(repositorioAsistencia.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioAsistencia.crear(asistencia)).thenReturn(10L);
         Mockito.when(repositorioTipoAsistencia.existePorId(Mockito.anyLong())).thenReturn(true);
         Mockito.when(daoTipoAsistencia.consultarPorId(Mockito.anyLong())).thenReturn(new DtoTipoAsistencia(1L,"LAVADO"));
