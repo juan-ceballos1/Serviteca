@@ -37,6 +37,9 @@ public class ConsultaControladorAsistenciaTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].idVehiculo", is(1)))
+                .andExpect(jsonPath("$[0].fechaInicio", is("2022-05-03 18:15:56")))
+                .andExpect(jsonPath("$[0].fechaFin", is("2022-05-03 18:15:56")))
+                .andExpect(jsonPath("$[0].precio", is(2000.0)))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }

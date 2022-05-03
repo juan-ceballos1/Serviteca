@@ -14,14 +14,8 @@ import java.time.LocalDateTime;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 public class ServicioCrearAsistencia {
-    private static final String LA_ASISTENCIA_YA_EXISTE_EN_EL_SISTEMA = "La asistencia ya existe en el sistema";
     private static final String EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA = "El tipo de asistencia no existe en el sistema";
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
-    private static final String FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL = "La fecha de finalizacion no debe ser menor a la de inicio";
     private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
-    private static final String LAVADO = "lavado";
-    private static final String CAMBIO_DE_ACEITE = "cambio de aceite";
-    private static final double PORCENTAJE_DE_AUMENTO = 0.3;
 
     private final RepositorioAsistencia repositorioAsistencia;
     private final DaoTipoAsistencia daoTipoAsistencia;
@@ -36,14 +30,8 @@ public class ServicioCrearAsistencia {
     public Long ejecutar(Asistencia asistencia) {
         verificarSiDomingo(asistencia.getFechaInicio());
         DtoTipoAsistencia dtoTipoAsistencia = obtenerTipoServicio(asistencia.getIdTipoAsistencia());
-        if(validarLavadoOCambioDeAceite(dtoTipoAsistencia.getNombre())){
-            asistencia.setFechaFin(asistencia.getFechaInicio());
-            aumentarPrecioSiFechaMartesOViernes(asistencia);
-        }
-        else{
-            validarObligatorio(asistencia.getFechaFin(),SE_DEBE_INGRESAR_LA_FECHA_FIN);
-            validarMenor(asistencia.getFechaInicio(), asistencia.getFechaFin(),FECHA_NO_DEBE_SER_MENOR_A_LA_INICIAL);
-        }
+        asistencia.asignarPrecio(dtoTipoAsistencia.getNombre());
+        asistencia.validarFechaFin(dtoTipoAsistencia.getNombre());
        return this.repositorioAsistencia.crear(asistencia);
     }
 
@@ -51,16 +39,6 @@ public class ServicioCrearAsistencia {
         if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
             throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
         }
-    }
-
-    private void aumentarPrecioSiFechaMartesOViernes(Asistencia asistencia){
-        if(asistencia.getFechaInicio().toLocalDate().getDayOfWeek()== DayOfWeek.TUESDAY|| asistencia.getFechaInicio().toLocalDate().getDayOfWeek()==DayOfWeek.FRIDAY){
-            double precio= asistencia.getPrecio();
-            asistencia.setPrecio(precio+precio*PORCENTAJE_DE_AUMENTO);
-        }
-    }
-    private boolean validarLavadoOCambioDeAceite(String nombre){
-        return LAVADO.equalsIgnoreCase(nombre)||CAMBIO_DE_ACEITE.equalsIgnoreCase(nombre);
     }
 
     private DtoTipoAsistencia obtenerTipoServicio(Long idTipoServicio){
