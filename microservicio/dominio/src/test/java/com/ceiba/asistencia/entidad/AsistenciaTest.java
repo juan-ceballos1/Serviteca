@@ -77,4 +77,16 @@ public class AsistenciaTest {
                 },
                 ExcepcionValorInvalido.class, "El precio debe ser mayor a 0");
     }
+
+    @Test
+    void deberiaFallarSiFechaInicialEsDomingo() {
+
+        //Arrange
+        AsistenciaTestDataBuilder asistenciaTestDataBuilder = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-01T18:15:56.331372800"));
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    asistenciaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Los domingos no hay servicio");
+    }
 }

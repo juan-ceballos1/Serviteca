@@ -15,7 +15,6 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 public class ServicioCrearAsistencia {
     private static final String EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA = "El tipo de asistencia no existe en el sistema";
-    private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
 
     private final RepositorioAsistencia repositorioAsistencia;
     private final DaoTipoAsistencia daoTipoAsistencia;
@@ -28,17 +27,10 @@ public class ServicioCrearAsistencia {
     }
 
     public Long ejecutar(Asistencia asistencia) {
-        verificarSiDomingo(asistencia.getFechaInicio());
         DtoTipoAsistencia dtoTipoAsistencia = obtenerTipoServicio(asistencia.getIdTipoAsistencia());
         asistencia.asignarPrecio(dtoTipoAsistencia.getNombre());
         asistencia.validarFechaFin(dtoTipoAsistencia.getNombre());
        return this.repositorioAsistencia.crear(asistencia);
-    }
-
-    private void verificarSiDomingo(LocalDateTime fecha){
-        if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
-            throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
-        }
     }
 
     private DtoTipoAsistencia obtenerTipoServicio(Long idTipoServicio){

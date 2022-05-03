@@ -1,10 +1,13 @@
 package com.ceiba.asistencia.modelo.entidad;
 
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+
 import lombok.Getter;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
+import static com.ceiba.validador.ValidadorServiteca.*;
 import static com.ceiba.dominio.ValidadorArgumento.*;
 
 @Getter
@@ -19,6 +22,7 @@ public class Asistencia {
     private static final String LAVADO = "lavado";
     private static final String CAMBIO_DE_ACEITE = "cambio de aceite";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FIN = "Se debe ingresar la fecha de finalizacion";
+    private static final String LOS_DOMINGOS_NO_HAY_SERVICIO = "Los domingos no hay servicio";
     private static final double PORCENTAJE_DE_AUMENTO = 0.3;
 
     private Long id;
@@ -34,6 +38,8 @@ public class Asistencia {
         validarObligatorio(fechaInicio,SE_DEBE_INGRESAR_LA_FECHA_INICIO);
         validarObligatorio(precio,SE_DEBE_INGRESAR_EL_PRECIO);
         validarPositivo(precio,PRECIO_MAYOR_A_CERO);
+        verificarSiDomingo(fechaInicio);
+        verificarDiaInvalido(fechaInicio,DayOfWeek.SUNDAY,LOS_DOMINGOS_NO_HAY_SERVICIO);
 
         this.id = id;
         this.idTipoAsistencia = idTipoAsistencia;
@@ -70,5 +76,10 @@ public class Asistencia {
     }
     private boolean validarLavadoOCambioDeAceite(String nombre){
         return LAVADO.equalsIgnoreCase(nombre)||CAMBIO_DE_ACEITE.equalsIgnoreCase(nombre);
+    }
+    private void verificarSiDomingo(LocalDateTime fecha){
+        if(fecha.toLocalDate().getDayOfWeek()==DayOfWeek.SUNDAY){
+            throw  new ExcepcionValorInvalido(LOS_DOMINGOS_NO_HAY_SERVICIO);
+        }
     }
 }
