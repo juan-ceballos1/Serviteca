@@ -15,6 +15,7 @@ public class ComandoAsistencia {
     private Long id;
     private Long idTipoAsistencia;
     private Long idVehiculo;
+
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
     private double precio;

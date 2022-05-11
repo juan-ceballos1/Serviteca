@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/asistencia")
 @Api(tags = { "Controlador comando asistencia"})
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ComandoControladorAsistencia {
 
     private final ManejadorCrearAsistencia manejadorCrearAsistencia;

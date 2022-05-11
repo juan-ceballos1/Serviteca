@@ -32,10 +32,13 @@ public class ServicioCrearAsistencia {
     }
 
     private DtoTipoAsistencia obtenerTipoServicio(Long idTipoServicio){
-        DtoTipoAsistencia dtoTipoAsistencia=daoTipoAsistencia.consultarPorId(idTipoServicio);
-        if(dtoTipoAsistencia==null){
+        try {
+            DtoTipoAsistencia dtoTipoAsistencia=daoTipoAsistencia.consultarPorId(idTipoServicio);
+
+            return  daoTipoAsistencia.consultarPorId(idTipoServicio);
+        }catch (Exception e){
             throw new ExcepcionDuplicidad(EL_TIPO_DE_ASISTENCIA_NO_EXISTE_EN_EL_SISTEMA);
         }
-        return  daoTipoAsistencia.consultarPorId(idTipoServicio);
+
     }
 }

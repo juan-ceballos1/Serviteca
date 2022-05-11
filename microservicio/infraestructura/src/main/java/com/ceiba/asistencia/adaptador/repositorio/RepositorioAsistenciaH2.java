@@ -48,10 +48,15 @@ public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
 
     @Override
     public boolean existePorId(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
+        try {
+            MapSqlParameterSource paramSource = new MapSqlParameterSource();
+            paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
 
+        }
+        catch (Exception e){
+            throw new RuntimeException("No existe ese vehiculo");
+        }
     }
 }

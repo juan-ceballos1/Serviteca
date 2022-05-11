@@ -31,6 +31,7 @@ dependencies {
 	testImplementation project(':comun:comun-test')
 
 	implementation project(':comun:comun-dominio')
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.5'
 
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok
