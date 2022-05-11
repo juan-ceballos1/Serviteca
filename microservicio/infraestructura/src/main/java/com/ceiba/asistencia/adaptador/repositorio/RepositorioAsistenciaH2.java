@@ -1,5 +1,6 @@
 package com.ceiba.asistencia.adaptador.repositorio;
 
+import com.ceiba.infraestructura.excepcion.ExcepcionTecnica;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.asistencia.modelo.entidad.Asistencia;
@@ -56,7 +57,7 @@ public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
 
         }
         catch (Exception e){
-            throw new RuntimeException("No existe ese vehiculo");
+            throw new ExcepcionTecnica("No existe ese vehiculo");
         }
     }
 }

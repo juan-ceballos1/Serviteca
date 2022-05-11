@@ -3,7 +3,6 @@ package com.ceiba.asistencia.adaptador.dao;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.asistencia.modelo.dto.DtoAsistencia;
 import com.ceiba.tipoasistencia.modelo.dto.DtoTipoAsistencia;
-import com.ceiba.tipoasistencia.modelo.entidad.TipoAsistencia;
 import com.ceiba.vehiculo.modelo.dto.DtoVehiculo;
 import org.springframework.jdbc.core.RowMapper;
 

@@ -1,6 +1,5 @@
 package com.ceiba.asistencia.modelo.entidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 
 import lombok.Getter;
 
