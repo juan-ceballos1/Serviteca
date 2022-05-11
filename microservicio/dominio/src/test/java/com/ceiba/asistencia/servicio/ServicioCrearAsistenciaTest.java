@@ -21,17 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ServicioCrearAsistenciaTest {
 
-    @Test
-    @DisplayName("Deberia lanzar una exepcion cuando el tipo asistencia no existe")
-    void deberiaLanzarUnaExepcionCuandoElTipoAsistenciaNoExista() {
-        // arrange
-        Asistencia asistencia = new AsistenciaTestDataBuilder().conFechaInicio(LocalDateTime.parse("2022-05-02T18:15:56.331372800")).build();
-        RepositorioAsistencia repositorioAsistencia = Mockito.mock(RepositorioAsistencia.class);
-        DaoTipoAsistencia daoTipoAsistencia = Mockito.mock(DaoTipoAsistencia.class);
-        ServicioCrearAsistencia servicioCrearAsistencia = new ServicioCrearAsistencia(repositorioAsistencia,daoTipoAsistencia);
-        // act-asserts
-        BasePrueba.assertThrows(() -> servicioCrearAsistencia.ejecutar(asistencia), ExcepcionDuplicidad.class,"El tipo de asistencia no existe en el sistema");
-    }
+
 
     @Test
     @DisplayName("Deberia Crear la asistencia de manera correcta y aumentar el precio si es lavado o cambio de aceite en los dias martes")
