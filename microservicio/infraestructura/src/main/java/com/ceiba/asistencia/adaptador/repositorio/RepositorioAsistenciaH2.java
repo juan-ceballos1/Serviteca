@@ -57,7 +57,7 @@ public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
 
         }
         catch (Exception e){
-            throw new ExcepcionTecnica("No existe ese vehiculo"+ e.getMessage());
+            throw new RuntimeException("Problema en la operación." ,e);
         }
     }
 }
