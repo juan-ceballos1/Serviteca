@@ -8,6 +8,8 @@ import com.ceiba.asistencia.puerto.repositorio.RepositorioAsistencia;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
+
 @Repository
 public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
@@ -49,15 +51,10 @@ public class RepositorioAsistenciaH2 implements RepositorioAsistencia {
 
     @Override
     public boolean existePorId(Long id) {
-        try {
-            MapSqlParameterSource paramSource = new MapSqlParameterSource();
-            paramSource.addValue("id", id);
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
 
-            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
 
-        }
-        catch (Exception e){
-            throw new RuntimeException("Problema en la operación." ,e);
-        }
     }
 }
